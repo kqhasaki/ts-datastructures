@@ -1,1 +1,1 @@
-export class MinHeap {}
+export * from "./MinHeap";

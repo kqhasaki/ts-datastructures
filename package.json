@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "tsc --module CommonJS --outDir dist/cjs --watch",
     "build": "rm -rf /dist && tsc && tsc --module CommonJS --outDir dist/cjs",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@types/jest": "^29.5.3"
