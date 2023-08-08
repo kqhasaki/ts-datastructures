@@ -1,2 +1,2 @@
 export * from "./LRU";
-export * from "./Heap";
+export * from "./Tree";

@@ -1,6 +1,11 @@
 {
-  "name": "ts-datastructures",
+  "name": "@kqhasaki/ts-datastructures",
   "version": "0.1.0",
+  "author": "kqhasaki",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kqhasaki/ts-datastructures.git"
+  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
