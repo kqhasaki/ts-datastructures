@@ -1,4 +1,4 @@
-export class LRU<K, V> {
+export class LRUCache<K, V> {
   private cache: Map<K, V> = new Map();
   public constructor(private capacity: number) {}
 

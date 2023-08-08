@@ -1,55 +1,78 @@
-import { BinarySearchTree } from "./BinarySearchTree"; //
+import { BinarySearchTree } from "./BinarySearchTree";
 
 describe("BinarySearchTree", () => {
-  let bst: BinarySearchTree<number>;
+  it("should insert elements correctly", () => {
+    const bst = new BinarySearchTree<number>();
+    bst.insert(10);
+    bst.insert(5);
+    bst.insert(15);
+    bst.insert(3);
 
-  beforeEach(() => {
-    bst = new BinarySearchTree<number>();
+    expect(bst.root!.value).toBe(10);
+    expect(bst.root!.left!.value).toBe(5);
+    expect(bst.root!.right!.value).toBe(15);
+    expect(bst.root!.left!.left!.value).toBe(3);
   });
 
-  test("should insert elements correctly", () => {
+  it("should search for elements correctly", () => {
+    const bst = new BinarySearchTree<number>();
+    bst.insert(10);
     bst.insert(5);
+    bst.insert(15);
     bst.insert(3);
-    bst.insert(7);
-    bst.insert(2);
 
-    expect(bst.inorderTraversal()).toEqual([2, 3, 5, 7]);
+    const node1 = bst.search(5);
+    const node2 = bst.search(15);
+    const node3 = bst.search(3);
+    const node4 = bst.search(8); // This value does not exist in the BST
+
+    expect(node1?.value).toBe(5);
+    expect(node2?.value).toBe(15);
+    expect(node3?.value).toBe(3);
+    expect(node4).toBeNull();
   });
 
-  test("should search for elements correctly", () => {
+  it("should perform preorder traversal correctly", () => {
+    const bst = new BinarySearchTree<number>();
+    bst.insert(10);
     bst.insert(5);
+    bst.insert(15);
     bst.insert(3);
     bst.insert(7);
-    bst.insert(2);
 
-    expect(bst.search(5)).not.toBeNull();
-    expect(bst.search(4)).toBeNull();
+    expect(bst.preorderTraversal()).toEqual([10, 5, 3, 7, 15]);
   });
 
-  test("should perform preorder traversal correctly", () => {
+  it("should perform inorder traversal correctly", () => {
+    const bst = new BinarySearchTree<number>();
+    bst.insert(10);
     bst.insert(5);
+    bst.insert(15);
     bst.insert(3);
     bst.insert(7);
-    bst.insert(2);
 
-    expect(bst.preorderTraversal()).toEqual([5, 3, 2, 7]);
+    expect(bst.inorderTraversal()).toEqual([3, 5, 7, 10, 15]);
   });
 
-  test("should perform inorder traversal correctly", () => {
+  it("should perform postorder traversal correctly", () => {
+    const bst = new BinarySearchTree<number>();
+    bst.insert(10);
     bst.insert(5);
+    bst.insert(15);
     bst.insert(3);
     bst.insert(7);
-    bst.insert(2);
 
-    expect(bst.inorderTraversal()).toEqual([2, 3, 5, 7]);
+    expect(bst.postOrderTraversal()).toEqual([3, 7, 5, 15, 10]);
   });
 
-  test("should perform postorder traversal correctly", () => {
+  it("should perform level order traversal correctly", () => {
+    const bst = new BinarySearchTree<number>();
+    bst.insert(10);
     bst.insert(5);
+    bst.insert(15);
     bst.insert(3);
     bst.insert(7);
-    bst.insert(2);
 
-    expect(bst.postOrderTraversal()).toEqual([2, 3, 7, 5]);
+    expect(bst.levelOrderTraversal()).toEqual([10, 5, 15, 3, 7]);
   });
 });

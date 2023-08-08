@@ -1,10 +1,10 @@
-import { LRU } from ".";
+import { LRUCache } from ".";
 
 describe("LRU Cache", () => {
-  let lru: LRU<number, string>;
+  let lru: LRUCache<number, string>;
 
   beforeEach(() => {
-    lru = new LRU<number, string>(3);
+    lru = new LRUCache<number, string>(3);
   });
 
   it("should add and retrieve items correctly", () => {

@@ -111,4 +111,30 @@ export class BinarySearchTree<T> {
       result.push(node.value);
     }
   }
+
+  /**
+   * 二叉搜索树层序遍历
+   */
+  public levelOrderTraversal(): T[] {
+    if (!this.root) {
+      return [];
+    }
+
+    const result: T[] = [];
+    const queue: TreeNode<T>[] = [this.root];
+
+    while (queue.length > 0) {
+      const node = queue.shift()!;
+      result.push(node.value);
+
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+
+    return result;
+  }
 }
